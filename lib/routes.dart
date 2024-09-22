@@ -8,7 +8,7 @@ import 'package:hiking_app/profile_page.dart';
 import 'package:hiking_app/settings/settings_page.dart';
 
 final Map<String, WidgetBuilder> appRoutes = {
-  '/': (context) => HomePage(),
+  '/': (context) => const HomePage(),
   '/login': (context) => const LoginPage(),
   '/profile': (context) => const ProfilePage(),
   '/maps': (context) => const MapsPage(),
