@@ -8,18 +8,41 @@ class MapsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hiking Maps'),
-      ),
-      body: FlutterMap(
-        options: MapOptions(
-          center: const LatLng(34.0522, -118.2437), // Example coordinates
-          zoom: 13.0,
-        ),
+      body: Stack(
         children: [
-          TileLayer(
-            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            subdomains: const ['a', 'b', 'c'],
+          FlutterMap(
+            options: MapOptions(
+              center: const LatLng(34.0522, -118.2437), // Example coordinates
+              zoom: 13.0,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate:
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                subdomains: ['a', 'b', 'c'],
+              ),
+            ],
+          ),
+          Positioned(
+            top: 40.0, // Adjust position as needed
+            left: 10.0, // Adjust position as needed
+            child: Container(
+              padding:
+                  const EdgeInsets.all(8.0), // Adjust padding for button size
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 109, 79, 68),
+                borderRadius:
+                    BorderRadius.circular(8.0), // Optional: rounded corners
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back,
+                    color: Colors.white, size: 30.0),
+                onPressed: () {
+                  Navigator.of(context)
+                      .pop(); // Navigate back to the previous screen
+                },
+              ),
+            ),
           ),
         ],
       ),
